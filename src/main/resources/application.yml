@@ -1,14 +1,35 @@
+#服务器配置
 server:
   port: 8087
   servlet:
     context-path: /surl
+  tomcat:
+    uri-encoding: UTF-8
+    accesslog:
+      enabled: true
 
 spring:
+  profiles:
+    active: dev
+
+mybatis:
+  check-config-location: true
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+---
+spring:
+  profiles: dev
   datasource:
     url: jdbc:mysql://localhost:3306/surl?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 8087
-mybatis:
-  config-location: classpath:mybatis/mybatis-config.xml
-  mapper-locations: classpath:mybatis/mapper/*.xml
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://localhost:3306/surl?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
