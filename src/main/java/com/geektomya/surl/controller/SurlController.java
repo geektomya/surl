@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/project")
+@RequestMapping("/surl")
 public class SurlController {
 
     @Autowired
