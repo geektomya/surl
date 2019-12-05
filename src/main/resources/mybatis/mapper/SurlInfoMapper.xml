@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.geektomya.surl.dao.SurlDao" >
+
+    <insert id="insertUrlInfo" parameterType="com.geektomya.surl.model.UrlInfo">
+        insert into url(id, real_url, short_url, type, current)
+        values (#{id},#{realUrl},#{shortUrl},#{type},#{current})
+    </insert>
+
+    <select id="getCurrentUrlInfo" resultType="com.geektomya.surl.model.UrlInfo">
+        select *  from url
+        where current = 1;
+    </select>
+
+
+</mapper>
