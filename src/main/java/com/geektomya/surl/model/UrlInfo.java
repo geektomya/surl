@@ -11,5 +11,7 @@ public class UrlInfo {
 
     private String shortUrl;
 
-    private String Url;
+    private String type;
+
+    private String current;
 }
