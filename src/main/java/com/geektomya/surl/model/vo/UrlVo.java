@@ -6,4 +6,6 @@ import lombok.Data;
 public class UrlVo {
 
     private String shortUrl;
+
+    private String realUrl;
 }
