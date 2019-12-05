@@ -7,5 +7,10 @@
         values (#{id},#{realUrl},#{shortUrl},#{type},#{current})
     </insert>
 
+    <select id="getCurrentUrlInfo" resultType="com.geektomya.surl.model.UrlInfo">
+        select *  from url
+        where current = 1;
+    </select>
+
 
 </mapper>

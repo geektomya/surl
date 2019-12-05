@@ -35,4 +35,10 @@ public class SurlDaoTest {
         boolean flag = surlDao.insertUrlInfo(urlInfo);
         assertEquals(true,flag);
     }
+
+    @Test
+    public void getCurrentUrlInfoTest(){
+        urlInfo = surlDao.getCurrentUrlInfo();
+        assertEquals("8888",urlInfo.getId());
+    }
 }

@@ -12,7 +12,12 @@ public interface SurlDao {
     * */
     boolean insertUrlInfo(UrlInfo urlInfo);
     /*
-    * 获取url信息
+    * 获取短url对应的原始url信息
     * */
     UrlVo getRealUrlInfo(UrlVo urlVo);
+    /*
+    * 获取最新的记录
+    * */
+    UrlInfo getCurrentUrlInfo();
+
 }
