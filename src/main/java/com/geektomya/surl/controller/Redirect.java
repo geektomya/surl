@@ -17,14 +17,19 @@ public class Redirect {
     @Autowired
     private SurlService surlService;
 
-
     @GetMapping("{shortUrl}")
     public ModelAndView redirect(@PathVariable String shortUrl, ModelAndView mav, HttpServletRequest request){
         String realUrl = surlService.getRealUrl(shortUrl);
         if (realUrl==null){
             realUrl = Messsage.INDEX;
         }
-        mav.setViewName("redirect:" + realUrl);
+        if (!surlService.isHttpUrl(realUrl)){
+            mav.setViewName("redirect:" + "http://"+realUrl);
+        }
+        else{
+            mav.setViewName("redirect:" + realUrl);
+        }
+
         return mav;
     }
 }

@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class SurlService {
@@ -34,6 +36,20 @@ public class SurlService {
        }
        return null;
     }
+
+    /**
+     * 判断字符串是否为URL
+     * @param urls 需要判断的String类型url
+     * @return true:是URL；false:不是URL
+     */
+    public boolean isHttpUrl(String urls) {
+        boolean isurl = false;
+        if (urls.startsWith("https")||urls.startsWith("http")){
+            isurl =true;
+        }
+        return isurl;
+    }
+
     /*
     * 获取原始Url对应短Url
     * */
@@ -87,6 +103,7 @@ public class SurlService {
         }
         return id;
     }
-
-
 }
+
+
+

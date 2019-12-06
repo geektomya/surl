@@ -17,5 +17,8 @@ public class Messsage {
     * 返回的短URL的前缀
     * */
     public static final String PERURL="http://localhost:8087/surl/";
-
+   /*
+   * 操作成功
+   * */
+   public static final String SUCCESS="操作成功";
 }

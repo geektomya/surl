@@ -67,5 +67,9 @@ public class ResponseUtil {
 
         return toFailResponseVo(null);
     }
+
+    public  static String tojs(String msg){
+        return msg;
+    }
 }
 
