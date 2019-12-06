@@ -94,6 +94,30 @@ public class SurlService {
     }
 
     /*
+    * 返回js
+    * */
+    public String getShortUrlInJs(){
+        StringBuffer buffer =new StringBuffer();
+        buffer.append("function setUrl(){\n" +
+                "    var realUrl =document.getElementById('url').href;\n" +
+                "    var ajax = new XMLHttpRequest();\n" +
+                "    ajax.open('post','").append(Messsage.PERINJS).append("intoShortUrl');\n" +
+                "    ajax.setRequestHeader(\"content-type\",\"application/x-www-form-urlencoded\");\n" +
+                "    ajax.send(`realUrl=${realUrl}`);\n" +
+                "    ajax.onreadystatechange = function () {\n" +
+                "        if(ajax.readyState==4&&ajax.status==200){\n" +
+                "            let obj = JSON.parse(ajax.responseText)\n" +
+                "            let res = obj.data.shortUrl\n" +
+                "            document.getElementById(\"url\").href=res;\n" +
+                "            document.getElementById(\"url\").innerHTML=res;\n" +
+                "        }  \n" +
+                "    }\n" +
+                "}");
+        String js = buffer.toString();
+        return js;
+    }
+
+    /*
     * 得到下次的id，绕过自定义的id
     * */
     public String nextid(String id){

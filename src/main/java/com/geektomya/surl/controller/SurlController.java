@@ -38,13 +38,10 @@ public class SurlController {
         return ResponseUtil.toResponseVo(200,Messsage.SUCCESS,urlVo);
     }
 
-    @PostMapping("js/{realUrl}")
-    public String getShrotUrlJs(@PathVariable String realUrl){
-        UrlInfo urlInfo = new UrlInfo();
-        urlInfo.setRealUrl(realUrl);
-        urlInfo.setType(0);
-        UrlVo urlVo= surlService.insertUrlinfo(urlInfo);
-        String msg ="function ciba(){document.write(\""+urlVo.getShortUrl()+"\");}";
-        return msg;
+    @GetMapping("js")
+    public String getShrotUrlJs(){
+        String js = surlService.getShortUrlInJs();
+        System.out.println(js);
+        return js;
     }
 }
