@@ -1,16 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.geektomya.surl.dao.SurlDao" >
-
+    <!--    添加一条数据-->
     <insert id="insertUrlInfo" parameterType="com.geektomya.surl.model.UrlInfo">
         insert into url(id, real_url, short_url, type, current)
         values (#{id},#{realUrl},#{shortUrl},#{type},#{current})
     </insert>
-
+    <!--    查询当前的id的记录-->
     <select id="getCurrentUrlInfo" resultType="com.geektomya.surl.model.UrlInfo">
         select *  from url
-        where current = 1;
+        where current = 1 and type = 0
     </select>
-
-
+    <!--    更新最新的id-->
+    <update id="upadteCurrntId" parameterType="java.lang.String">
+        update url set current = 0
+        where id = #{id}
+    </update>
+    <!--    获取短网址对应的原始网址-->
+    <select id="getRealUrlInfo" resultType="com.geektomya.surl.model.vo.UrlVo">
+        select real_url from url
+        where short_url = #{shortUrl}
+    </select>
+    <!--    获取原网址对应的短网址-->
+    <select id="getRealUrlsByShortUrl" parameterType="com.geektomya.surl.model.vo.UrlVo" resultType="com.geektomya.surl.model.vo.UrlVo">
+        select real_url,short_url from url
+        where real_url = #{realUrl}
+    </select>
+    <!--    查找某个id是否被使用了-->
+    <select id="selectIdInUse" parameterType="java.lang.String" resultType="com.geektomya.surl.model.UrlInfo">
+        select * from url
+        where type = 1 and id = #{id}
+    </select>
 </mapper>
