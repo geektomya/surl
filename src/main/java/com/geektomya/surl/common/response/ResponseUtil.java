@@ -1,5 +1,8 @@
 package com.geektomya.surl.common.response;
 
+/**
+ * @author yaoqiuhong
+ */
 public class ResponseUtil {
 
     public static enum ResponseStatus{
