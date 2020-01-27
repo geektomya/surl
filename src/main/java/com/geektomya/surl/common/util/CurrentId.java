@@ -6,6 +6,10 @@ import com.geektomya.surl.model.UrlInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author yaoqiuhong
+ * @description 用来获取到当前的自增Id的位置
+ */
 @Service
 public class CurrentId {
 
