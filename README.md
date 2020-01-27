@@ -15,6 +15,7 @@ SpringBoot + Maven + Mybatis
 
 ### 目录结构
 
+```
 ├── java
 │   └── com
 │       └── geektomya
@@ -33,6 +34,7 @@ SpringBoot + Maven + Mybatis
     ├── mybatis
     │   └── mapper
     └── static
+```
 
 短链返回的域名前缀等信息存于message中
 
