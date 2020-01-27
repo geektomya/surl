@@ -3,8 +3,9 @@ package com.geektomya.surl.common.response;
 public class ResponseUtil {
 
     public static enum ResponseStatus{
-
+        // 成功用1表示
         Success(1),
+        // 失败用0表示
         Fail(0);
 
         ResponseStatus(int code){
