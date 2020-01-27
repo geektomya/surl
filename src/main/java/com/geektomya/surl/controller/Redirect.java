@@ -12,15 +12,20 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * @author yaoqiuhong
+ * @description 用于对短链接重定向到原始链接
+ */
 @Controller
 public class Redirect {
+
     @Autowired
     private SurlService surlService;
 
     @GetMapping("{shortUrl}")
     public ModelAndView redirect(@PathVariable String shortUrl, ModelAndView mav, HttpServletRequest request){
         String realUrl = surlService.getRealUrl(shortUrl);
-        if (realUrl==null){
+        if (realUrl == null){
             realUrl = Messsage.INDEX;
         }
         if (!surlService.isHttpUrl(realUrl)){

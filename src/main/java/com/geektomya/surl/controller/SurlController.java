@@ -10,6 +10,10 @@ import com.geektomya.surl.service.SurlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * @author yaoqiuhong
+ * @description
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("url")
@@ -18,11 +22,11 @@ public class SurlController {
     @Autowired
     private SurlService surlService;
 
-    /*
+    /**
     * @description 根据长链变换为短链
     * @param realUrl  原始的url
     * @param  type     用户自定义为1，系统自动为0
-    * */
+    */
     @PostMapping("intoShortUrl")
     public ResponseVo<UrlVo> insertUrlInfo(UrlInfo urlInfo){
         UrlVo urlVo= surlService.insertUrlinfo(urlInfo);

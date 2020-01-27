@@ -13,6 +13,10 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author yaoqiuhong
+ * @description
+ */
 @Service
 public class SurlService {
 
@@ -22,9 +26,11 @@ public class SurlService {
     private CurrentId currentId;
     private UrlVo urlVo;
 
-    /*
-    * 获取短Url对应的原始Url
-    * */
+    /**
+     * 获取短Url对应的原始Url
+     * @param shortUrl
+     * @return
+     */
     public String getRealUrl(String shortUrl){
        if (shortUrl != null){
            urlVo = surlDao.getRealUrlInfo(shortUrl);
@@ -50,9 +56,11 @@ public class SurlService {
         return isurl;
     }
 
-    /*
-    * 获取原始Url对应短Url
-    * */
+    /**
+     * 获取原始Url对应短Url
+     * @param urlVo
+     * @return
+     */
     public List<UrlVo> getRealUrlsByShortUrl(UrlVo urlVo){
         if (urlVo == null){
             return null;
@@ -64,9 +72,12 @@ public class SurlService {
             throw new ServerException();
         }
     }
-    /*
-    * 插入生成的短url
-    * */
+
+    /**
+     * 插入生成的短url
+     * @param urlInfo
+     * @return
+     */
     public UrlVo insertUrlinfo(UrlInfo urlInfo){
         long id = Long.parseLong(currentId.getCurrentId());
         long currentId = Long.parseLong(nextid(String.valueOf(id+1)));
@@ -93,9 +104,10 @@ public class SurlService {
        return null;
     }
 
-    /*
-    * 返回js
-    * */
+    /**
+     * 返回js
+     * @return
+     */
     public String getShortUrlInJs(){
         StringBuffer buffer =new StringBuffer();
         buffer.append("function setUrl(){\n" +
@@ -117,9 +129,11 @@ public class SurlService {
         return js;
     }
 
-    /*
-    * 得到下次的id，绕过自定义的id
-    * */
+    /**
+     * 得到下次的id，绕过自定义的id
+     * @param id
+     * @return
+     */
     public String nextid(String id){
         while (surlDao.selectIdInUse(id)!=null){
            long nextid = Long.parseLong(id)+1;
